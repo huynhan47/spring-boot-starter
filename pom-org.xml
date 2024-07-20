@@ -41,6 +41,7 @@
     <module>mybatis-spring-boot-autoconfigure</module>
     <module>mybatis-spring-boot-starter</module>
     <module>mybatis-spring-boot-samples</module>
+    <module>mybatis-timtim</module>
     <module>mybatis-spring-boot-starter-test</module>
     <module>mybatis-spring-boot-test-autoconfigure</module>
   </modules>
@@ -77,7 +78,7 @@
     <mybatis-freemarker.version>1.2.4</mybatis-freemarker.version>
     <mybatis-velocity.version>2.1.2</mybatis-velocity.version>
     <mybatis-thymeleaf.version>1.0.4</mybatis-thymeleaf.version>
-    <spring-boot.version>3.3.1</spring-boot.version>
+    <spring-boot.version>3.3.2</spring-boot.version>
 
     <argLine>--add-opens java.base/java.lang=ALL-UNNAMED -Dfile.encoding=UTF-8</argLine>
 
@@ -154,7 +155,6 @@
         <artifactId>lombok</artifactId>
         <version>1.18.34</version>
         <scope>provided</scope>
-
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -263,26 +263,24 @@
             </rules>
           </configuration>
         </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <configuration>
+            <source>16</source>
+            <target>16</target>
+            <annotationProcessorPaths>
+              <path>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.34</version>
+              </path>
+            </annotationProcessorPaths>
+          </configuration>
+
+        </plugin>
       </plugins>
     </pluginManagement>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>16</source>
-          <target>16</target>
-          <annotationProcessorPaths>
-            <path>
-              <groupId>org.projectlombok</groupId>
-              <artifactId>lombok</artifactId>
-              <version>1.18.34</version>
-            </path>
-          </annotationProcessorPaths>
-        </configuration>
-
-      </plugin>
-    </plugins>
   </build>
 
 </project>

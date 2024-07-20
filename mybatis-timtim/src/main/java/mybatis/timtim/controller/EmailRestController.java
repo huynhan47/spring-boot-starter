@@ -15,29 +15,31 @@
  */
 package mybatis.timtim.controller;
 
+
+import mybatis.timtim.domain.City;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import mybatis.timtim.domain.City;
-import mybatis.timtim.mapper.CityMapper;
-
-@RequestMapping("/cities")
+@RequestMapping("/email")
 @RestController
 
-public class CityRestController {
+public class EmailRestController {
 
-  private final CityMapper cityMapper;
+  private final EmailService emailSender ;
 
-  public CityRestController(CityMapper cityMapper) {
-    this.cityMapper = cityMapper;
+  public EmailRestController( EmailService emailSender) {
+    this.emailSender = emailSender;
   }
 
   @GetMapping("{state}")
-  City getCity(@PathVariable("state") String state) {
-    return cityMapper.findByState(state);
+  void sendEmail(@PathVariable("state") String state) {
+    emailSender.sendEmail("huynhan007@gmail.com","Test","state");
   }
-
+//
+//  @GetMapping("{state}")
+//  emailSender.s("a","b","c");
 
 }

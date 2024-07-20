@@ -1,5 +1,5 @@
 /*
- *    Copyright 2015-2022 the original author or authors.
+ *    Copyright 2015-2024 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -15,14 +15,17 @@
  */
 package mybatis.timtim.domain;
 
-import java.io.Serializable;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @author Eddú Meléndez
  */
-public class City implements Serializable {
+@Getter
+@Setter
+public class City {
 
-  private static final long serialVersionUID = 1L;
+  // private static final long serialVersionUID = 1L;
 
   private Long id;
 
@@ -32,37 +35,37 @@ public class City implements Serializable {
 
   private String country;
 
-  public Long getId() {
-    return this.id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public String getName() {
-    return this.name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public String getState() {
-    return this.state;
-  }
-
-  public void setState(String state) {
-    this.state = state;
-  }
-
-  public String getCountry() {
-    return this.country;
-  }
-
-  public void setCountry(String country) {
-    this.country = country;
-  }
+  // public Long getId() {
+  // return this.id;
+  // }
+  //
+  // public void setId(Long id) {
+  // this.id = id;
+  // }
+  //
+  // public String getName() {
+  // return this.name;
+  // }
+  //
+  // public void setName(String name) {
+  // this.name = name;
+  // }
+  //
+  // public String getState() {
+  // return this.state;
+  // }
+  //
+  // public void setState(String state) {
+  // this.state = state;
+  // }
+  //
+  // public String getCountry() {
+  // return this.country;
+  // }
+  //
+  // public void setCountry(String country) {
+  // this.country = country;
+  // }
 
   @Override
   public String toString() {

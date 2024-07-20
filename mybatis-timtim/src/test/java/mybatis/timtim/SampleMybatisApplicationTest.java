@@ -1,5 +1,5 @@
 /*
- *    Copyright 2015-2022 the original author or authors.
+ *    Copyright 2015-2024 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -37,7 +37,7 @@ class SampleMybatisApplicationTest {
   void test() {
     @SuppressWarnings("unchecked")
     Map<String, Object> body = this.restTemplate.getForObject("/cities/{state}", Map.class, "CA");
-    assertThat(body).hasSize(4).containsEntry("id", 1).containsEntry("name", "San Francisco")
+    assertThat(body).hasSize(4).containsEntry("id", 1).containsEntry("name", "San1 Francisco")
         .containsEntry("state", "CA").containsEntry("country", "US");
   }
 
