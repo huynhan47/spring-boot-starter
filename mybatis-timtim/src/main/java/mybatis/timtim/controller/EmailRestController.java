@@ -16,6 +16,7 @@
 package mybatis.timtim.controller;
 
 
+import jakarta.mail.MessagingException;
 import mybatis.timtim.domain.City;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,20 +31,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class EmailRestController {
   @Value("${timtim.body}")
   private String body;
-  private final EmailService emailSender ;
+  private final EmailHTMLService emailSender ;
 
-  public EmailRestController( EmailService emailSender) {
+  public EmailRestController( EmailHTMLService emailSender) {
     this.emailSender = emailSender;
 
   }
 
   @GetMapping("{state}")
-  void sendEmail(@PathVariable("state") String state) {
-
-
-
-
-    emailSender.sendEmail("huynhan007@gmail.com","Test",this.body);
+  void sendEmail(@PathVariable("state") String state) throws MessagingException {
+    emailSender.sendHtmlEmail("huynhan007@gmail.com","Test",this.body);
   }
 //
 //  @GetMapping("{state}")
