@@ -41,6 +41,7 @@
     <module>mybatis-spring-boot-autoconfigure</module>
     <module>mybatis-spring-boot-starter</module>
     <module>mybatis-spring-boot-samples</module>
+    <module>mybatis-timtim</module>
     <module>mybatis-spring-boot-starter-test</module>
     <module>mybatis-spring-boot-test-autoconfigure</module>
   </modules>

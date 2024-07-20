@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-       Copyright 2015-2023 the original author or authors.
+       Copyright 2015-2024 the original author or authors.
 
        Licensed under the Apache License, Version 2.0 (the "License");
        you may not use this file except in compliance with the License.
@@ -27,17 +27,17 @@
   <packaging>pom</packaging>
   <name>mybatis-spring-boot-samples</name>
   <modules>
-    <module>mybatis-spring-boot-sample-annotation</module>
-    <module>mybatis-spring-boot-sample-freemarker</module>
-    <module>mybatis-spring-boot-sample-freemarker-legacy</module>
-    <module>mybatis-spring-boot-sample-groovy</module>
-    <module>mybatis-spring-boot-sample-kotlin</module>
-    <module>mybatis-spring-boot-sample-thymeleaf</module>
-    <module>mybatis-spring-boot-sample-velocity</module>
-    <module>mybatis-spring-boot-sample-velocity-legacy</module>
-    <module>mybatis-spring-boot-sample-war</module>
-    <module>mybatis-spring-boot-sample-web</module>
-    <module>mybatis-spring-boot-sample-xml</module>
+    <!--    <module>mybatis-spring-boot-sample-annotation</module>-->
+    <!--    <module>mybatis-spring-boot-sample-freemarker</module>-->
+    <!--    <module>mybatis-spring-boot-sample-freemarker-legacy</module>-->
+    <!--    <module>mybatis-spring-boot-sample-groovy</module>-->
+    <!--    <module>mybatis-spring-boot-sample-kotlin</module>-->
+    <!--    <module>mybatis-spring-boot-sample-thymeleaf</module>-->
+    <!--    <module>mybatis-spring-boot-sample-velocity</module>-->
+    <!--    <module>mybatis-spring-boot-sample-velocity-legacy</module>-->
+    <!--    <module>mybatis-spring-boot-sample-war</module>-->
+    <!--    <module>mybatis-spring-boot-sample-web</module>-->
+    <!--    <module>mybatis-spring-boot-sample-xml</module>-->
   </modules>
   <properties>
     <module.name>org.mybatis.spring.sample</module.name>
