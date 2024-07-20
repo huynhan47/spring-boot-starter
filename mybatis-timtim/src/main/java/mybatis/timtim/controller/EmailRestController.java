@@ -18,6 +18,7 @@ package mybatis.timtim.controller;
 
 import mybatis.timtim.domain.City;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,16 +28,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 
 public class EmailRestController {
-
+  @Value("${timtim.body}")
+  private String body;
   private final EmailService emailSender ;
 
   public EmailRestController( EmailService emailSender) {
     this.emailSender = emailSender;
+
   }
 
   @GetMapping("{state}")
   void sendEmail(@PathVariable("state") String state) {
-    emailSender.sendEmail("huynhan007@gmail.com","Test","state");
+
+
+
+
+    emailSender.sendEmail("huynhan007@gmail.com","Test",this.body);
   }
 //
 //  @GetMapping("{state}")
