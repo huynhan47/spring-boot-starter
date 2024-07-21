@@ -29,8 +29,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 
 public class EmailRestController {
-  @Value("${timtim.body}")
-  private String body;
+  //@Value("${timtim.body}")48
+  ///private String body;
   private final EmailHTMLService emailSender ;
 
   public EmailRestController( EmailHTMLService emailSender) {
@@ -39,8 +39,8 @@ public class EmailRestController {
   }
 
   @GetMapping("{state}")
-  void sendEmail(@PathVariable("state") String state) throws MessagingException {
-    emailSender.sendHtmlEmail("huynhan007@gmail.com","Test",this.body);
+  void sendEmail(@PathVariable("state") String state) throws MessagingException, javax.mail.MessagingException {
+    emailSender.sendHtmlEmail("huynhan007@gmail.com","Test");
   }
 //
 //  @GetMapping("{state}")

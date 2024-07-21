@@ -15,13 +15,37 @@
  */
 package mybatis.timtim.controller;
 
-import jakarta.mail.MessagingException;
-import jakarta.mail.internet.InternetAddress;
+//import jakarta.mail.BodyPart;
+//import jakarta.mail.MessagingException;
+//import jakarta.mail.internet.InternetAddress;
+import jakarta.activation.DataHandler;
+import jakarta.activation.DataSource;
+import jakarta.activation.FileDataSource;
+import jakarta.mail.internet.MimeBodyPart;
+import jakarta.mail.internet.MimeBodyPart;
 import jakarta.mail.internet.MimeMessage;
+import jakarta.mail.internet.MimeMultipart;
+
+import javax.mail.BodyPart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+
+
+import java.util.Properties;
+//import javax.activation.DataHandler;
+//import javax.activation.DataSource;
+import javax.mail.BodyPart;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+//import javax.mail.internet.MimeBodyPart;
+//import javax.mail.internet.MimeMessage;
+//import javax.mail.internet.MimeMultipart;
 
 @Service
 public class EmailHTMLService {
@@ -29,20 +53,65 @@ public class EmailHTMLService {
   @Autowired
   private JavaMailSender mailSender;
 
-  public void sendHtmlEmail(String to, String subject, String body)  throws MessagingException {
+  public void sendHtmlEmail(String to, String subject) throws MessagingException, jakarta.mail.MessagingException {
     MimeMessage message = mailSender.createMimeMessage();
+//
+//    message.setFrom(new InternetAddress(to));
+//    message.setRecipients(MimeMessage.RecipientType.TO, to);
+//    message.setSubject(subject);
+//    //message.addHeaderLine("myLogo", new ClassPathResource("img/mylogo.gif"));
+//
+//      try {
+//          message.setContent(body, "text/html; charset=utf-8");
+//      } catch (MessagingException e) {
+//          throw new RuntimeException(e);
+//      }
+//    Session session = Session.getInstance(props,
+//            new javax.mail.Authenticator() {
+//              protected PasswordAuthentication getPasswordAuthentication() {
+//                return new PasswordAuthentication(mailSender.getClass().g, password);
+//              }
+//            });
 
-    message.setFrom(new InternetAddress(to));
+//    Message message = new MimeMessage(session);
+//
+//    // Set From: header field of the header.
+//    message.setFrom(new InternetAddress(from));
+
+//    // Set To: header field of the header.
+//    message.setRecipients(Message.RecipientType.TO,
+//            InternetAddress.parse(to));
+//
+//    // Set Subject: header field
+    message.setSubject("Testing Subject");
+
     message.setRecipients(MimeMessage.RecipientType.TO, to);
     message.setSubject(subject);
 
+    // This mail has 2 part, the BODY and the embedded image
+    MimeMultipart multipart = new MimeMultipart("related");
 
-      try {
-          message.setContent(body, "text/html; charset=utf-8");
-      } catch (MessagingException e) {
-          throw new RuntimeException(e);
-      }
+    // first part (the html)
+    MimeBodyPart messageBodyPart = new MimeBodyPart();
+    String htmlText = "<H1>Hello</H1><img src=\"cid:image\">";
+    messageBodyPart.setContent(htmlText, "text/html");
+    // add it
+    multipart.addBodyPart(messageBodyPart);
 
-      mailSender.send(message);
+    // second part (the image)
+    messageBodyPart = new MimeBodyPart();
+    DataSource fds = new FileDataSource(
+            "C:\\Test\\Vietnamese1.png");
+
+    messageBodyPart.setDataHandler(new DataHandler(fds));
+    messageBodyPart.setHeader("Content-ID", "<image>");
+
+    // add image to the multipart
+    multipart.addBodyPart(messageBodyPart);
+
+    // put everything together
+    message.setContent(multipart);
+
+    mailSender.send(message);
   }
 }
