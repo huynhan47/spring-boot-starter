@@ -13,26 +13,21 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-package mybatis.timtim.mapper;
+package mybatis.timtim.domain;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-
-import mybatis.timtim.domain.City;
-
-import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @author Eddú Meléndez
  */
-@Mapper
-public interface CityMapper {
+@Getter
+@Setter
+public class Donation {
 
-  @Select("select id, name, state, country from city where state = #{state}")
-  City findByState(@Param("state") String state);
+  // private static final long serialVersionUID = 1L;
 
-  @Select("select id, name, state, country from city")
-  List<City> findAllState();
+  private Long user_id;
 
+  private String amount;
 }

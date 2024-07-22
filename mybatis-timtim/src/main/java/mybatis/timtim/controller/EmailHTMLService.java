@@ -36,33 +36,7 @@ public class EmailHTMLService {
 
   public void sendHtmlEmail(String to, String subject) throws MessagingException, jakarta.mail.MessagingException {
     MimeMessage message = mailSender.createMimeMessage();
-    //
-    // message.setFrom(new InternetAddress(to));
-    // message.setRecipients(MimeMessage.RecipientType.TO, to);
-    // message.setSubject(subject);
-    // //message.addHeaderLine("myLogo", new ClassPathResource("img/mylogo.gif"));
-    //
-    // try {
-    // message.setContent(body, "text/html; charset=utf-8");
-    // } catch (MessagingException e) {
-    // throw new RuntimeException(e);
-    // }
-    // Session session = Session.getInstance(props,
-    // new javax.mail.Authenticator() {
-    // protected PasswordAuthentication getPasswordAuthentication() {
-    // return new PasswordAuthentication(mailSender.getClass().g, password);
-    // }
-    // });
 
-    // Message message = new MimeMessage(session);
-    //
-    // // Set From: header field of the header.
-    // message.setFrom(new InternetAddress(from));
-
-    // // Set To: header field of the header.
-    // message.setRecipients(Message.RecipientType.TO,
-    // InternetAddress.parse(to));
-    //
     // // Set Subject: header field
     message.setSubject("Testing Subject");
 

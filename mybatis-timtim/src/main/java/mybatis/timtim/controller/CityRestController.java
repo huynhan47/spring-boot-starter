@@ -23,6 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
 import mybatis.timtim.domain.City;
 import mybatis.timtim.mapper.CityMapper;
 
+import java.util.List;
+
 @RequestMapping("/cities")
 @RestController
 
@@ -37,5 +39,9 @@ public class CityRestController {
   @GetMapping("{state}")
   City getCity(@PathVariable("state") String state) {
     return cityMapper.findByState(state);
+  }
+  @GetMapping("/all")
+  List<City> getAllCity() {
+    return cityMapper.findAllState();
   }
 }

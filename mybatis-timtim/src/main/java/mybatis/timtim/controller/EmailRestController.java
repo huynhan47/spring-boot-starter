@@ -32,15 +32,10 @@ public class EmailRestController {
 
   public EmailRestController(EmailHTMLService emailSender) {
     this.emailSender = emailSender;
-
   }
 
   @GetMapping("{state}")
   void sendEmail(@PathVariable("state") String state) throws MessagingException, javax.mail.MessagingException {
     emailSender.sendHtmlEmail("huynhan007@gmail.com", "Test");
   }
-  //
-  // @GetMapping("{state}")
-  // emailSender.s("a","b","c");
-
 }

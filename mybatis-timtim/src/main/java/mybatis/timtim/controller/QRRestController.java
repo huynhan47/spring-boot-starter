@@ -22,8 +22,11 @@ import com.google.zxing.oned.EAN13Writer;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.List;
 
 import com.google.zxing.qrcode.QRCodeWriter;
+import mybatis.timtim.domain.City;
+import mybatis.timtim.mapper.CityMapper;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,16 +38,31 @@ import javax.imageio.ImageIO;
 @RestController
 
 public class QRRestController {
+  private final CityMapper cityMapper;
 
+  public QRRestController(CityMapper cityMapper) {
+    this.cityMapper = cityMapper;
+  }
   @GetMapping("{text}")
-  public static String generateQRCodeImage(@PathVariable("text") String barcodeText) throws Exception {
+  public String generateQRCodeImage(@PathVariable("text") String barcodeText) throws Exception {
     QRCodeWriter barcodeWriter = new QRCodeWriter();
-    BitMatrix bitMatrix =
-            barcodeWriter.encode(barcodeText, BarcodeFormat.QR_CODE, 200, 200);
+    BitMatrix bitMatrix;
+//            = barcodeWriter.encode(barcodeText, BarcodeFormat.QR_CODE, 200, 200);
 
-    BufferedImage bufferedImage = MatrixToImageWriter.toBufferedImage(bitMatrix);
-    File outputfile = new File("D:\\image.jpg");
-    ImageIO.write(bufferedImage, "jpg", outputfile);
+    BufferedImage bufferedImage ;
+//    = MatrixToImageWriter.toBufferedImage(bitMatrix);
+    File outputfile ;
+//            = new File("D:\\image.jpg");
+//    ImageIO.write(bufferedImage, "jpg", outputfile);
+
+    List<City> cities = cityMapper.findAllState();
+    for (City city : cities) {
+      bitMatrix
+            = barcodeWriter.encode(city.getState(), BarcodeFormat.QR_CODE, 200, 200);
+      bufferedImage = MatrixToImageWriter.toBufferedImage(bitMatrix);
+      outputfile = new File("D:\\"+city.getState()+".jpg");
+      ImageIO.write(bufferedImage, "jpg", outputfile);
+    }
     return "1";
   }
 }
