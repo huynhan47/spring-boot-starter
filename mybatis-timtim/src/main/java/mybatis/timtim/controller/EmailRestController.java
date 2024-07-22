@@ -15,11 +15,8 @@
  */
 package mybatis.timtim.controller;
 
-
 import jakarta.mail.MessagingException;
-import mybatis.timtim.domain.City;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,21 +26,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 
 public class EmailRestController {
-  //@Value("${timtim.body}")48
-  ///private String body;
-  private final EmailHTMLService emailSender ;
+  // @Value("${timtim.body}")48
+  /// private String body;
+  private final EmailHTMLService emailSender;
 
-  public EmailRestController( EmailHTMLService emailSender) {
+  public EmailRestController(EmailHTMLService emailSender) {
     this.emailSender = emailSender;
 
   }
 
   @GetMapping("{state}")
   void sendEmail(@PathVariable("state") String state) throws MessagingException, javax.mail.MessagingException {
-    emailSender.sendHtmlEmail("huynhan007@gmail.com","Test");
+    emailSender.sendHtmlEmail("huynhan007@gmail.com", "Test");
   }
-//
-//  @GetMapping("{state}")
-//  emailSender.s("a","b","c");
+  //
+  // @GetMapping("{state}")
+  // emailSender.s("a","b","c");
 
 }
