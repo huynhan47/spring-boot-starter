@@ -17,6 +17,7 @@ package mybatis.timtim.controller;
 
 import jakarta.mail.MessagingException;
 
+import mybatis.timtim.service.EmailHTMLService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,6 +37,6 @@ public class EmailRestController {
 
   @GetMapping("{state}")
   void sendEmail(@PathVariable("state") String state) throws MessagingException, javax.mail.MessagingException {
-    emailSender.sendHtmlEmail("huynhan007@gmail.com", "Test");
+    emailSender.sendHtmlEmail("huynhan007@gmail.com", "Test","C:\\Test\\Vietnamese1.png");
   }
 }

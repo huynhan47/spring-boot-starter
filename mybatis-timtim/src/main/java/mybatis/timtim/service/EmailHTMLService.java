@@ -13,7 +13,7 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-package mybatis.timtim.controller;
+package mybatis.timtim.service;
 
 import jakarta.activation.DataHandler;
 import jakarta.activation.DataSource;
@@ -34,7 +34,7 @@ public class EmailHTMLService {
   @Autowired
   private JavaMailSender mailSender;
 
-  public void sendHtmlEmail(String to, String subject) throws MessagingException, jakarta.mail.MessagingException {
+  public void sendHtmlEmail(String to, String subject, String imgPath) throws MessagingException, jakarta.mail.MessagingException {
     MimeMessage message = mailSender.createMimeMessage();
 
     // // Set Subject: header field
@@ -55,7 +55,7 @@ public class EmailHTMLService {
 
     // second part (the image)
     messageBodyPart = new MimeBodyPart();
-    DataSource fds = new FileDataSource("C:\\Test\\Vietnamese1.png");
+    DataSource fds = new FileDataSource(imgPath);
 
     messageBodyPart.setDataHandler(new DataHandler(fds));
     messageBodyPart.setHeader("Content-ID", "<image>");
